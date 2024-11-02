@@ -3,7 +3,7 @@ region = "us-east-1"
 }
 
 resource "aws_instance" "two" {
-count = 4
+count = 5
 ami = "ami-0ddc798b3f1a5117e"
 instance_type = "t2.medium"
 key_name = "mafidshaikpem77"
@@ -13,6 +13,12 @@ Name = var.instance_names[count.index]
 }
 }
 
+resource "aws_s3_bucket" "two" {
+  bucket = "netflix-war-bucket"
+  depends_on = [aws_instance.one]
+}
+
+
 variable "instance_names" {
-default = ["jenkins", "nexus", "tomcat-1", "tomcat-2"]
+default = ["ansible-server", "dev-1", "dev-2", "test-1", "test-2"]
 }
