@@ -14,7 +14,7 @@ Name = var.instance_names[count.index]
 }
 
 resource "aws_s3_bucket" "two" {
-  bucket = "project-bucket"
+  bucket = "netflix-127"
   depends_on = [aws_instance.one]
 }
 
